@@ -1,3 +1,5 @@
+const WEEK_STORAGE_KEY = "cs50c.currentWeek";
+
 const state = {
   currentWeek: "week1",
   cardIndex: 0,
@@ -10,6 +12,29 @@ const syntaxBlocks = window.CS50C.syntaxBlocks;
 const practices = window.CS50C.practices;
 const drills = window.CS50C.drills;
 const cards = window.CS50C.trainerCards;
+
+function getSavedWeek() {
+  try {
+    return localStorage.getItem(WEEK_STORAGE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function saveCurrentWeek() {
+  try {
+    localStorage.setItem(WEEK_STORAGE_KEY, state.currentWeek);
+  } catch {
+    // The tab still works if storage is disabled.
+  }
+}
+
+function restoreCurrentWeek() {
+  const savedWeek = getSavedWeek();
+  if (accelerator.some(week => week.id === savedWeek)) {
+    state.currentWeek = savedWeek;
+  }
+}
 
 function renderWeekTabs() {
   const tabs = document.querySelector("#weekTabs");
@@ -31,6 +56,7 @@ function renderWeekTabs() {
       return;
     }
     state.currentWeek = target.dataset.week;
+    saveCurrentWeek();
     renderAll();
   };
 }
@@ -371,6 +397,7 @@ function formatInline(value) {
   return escapeHtml(value).replace(/`([^`]+)`/g, "<code>$1</code>");
 }
 
+restoreCurrentWeek();
 renderAll();
 renderCoverage();
 renderSyntax();
