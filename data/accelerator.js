@@ -115,7 +115,7 @@ int main(void)
         ],
         checks: [
           {
-            question: "Why do we include `cs50.h` here?",
+            question: "Why do we write `#include <cs50.h>` here?",
             answer: "`cs50.h` declares CS50's helper functions and types, including `get_string`, `get_int`, and `string`."
           },
           {
@@ -230,7 +230,7 @@ int main(void)
 .###
 ####`
         },
-        codeNote: "Fragment, not a full runnable file: this is only the helper function. To compile it, add headers, a prototype if `main` calls it before the definition, and a `main` function that calls `print_row`. If the full file is `mario_rows.c`, run `make mario_rows`, then `./mario_rows`.",
+        codeNote: "Fragment, not a full runnable file: this is only the helper function. To compile it, add `#include <stdio.h>`, a prototype if `main` calls it before the definition, and a `main` function that calls `print_row`. If the full file is `mario_rows.c`, run `make mario_rows`, then `./mario_rows`.",
         code: `void print_row(int spaces, int bricks)
 {
     for (int i = 0; i < spaces; i++)
@@ -572,7 +572,7 @@ for (int i = 0, n = strlen(s); i < n; i++)
           }
         ],
         exercises: [
-          "Add the needed headers above this `main` function, save it as `3.c`, run `make 3`, then run `./3 InsertWord`.",
+          "Add `#include <cs50.h>` and `#include <stdio.h>` above this `main` function, save it as `3.c`, run `make 3`, then run `./3 InsertWord`.",
           "Run `./3` and `./3 one two` to prove the usage message appears when the argument count is wrong.",
           "Replace the final `printf` with a new `for` loop that prints every command-line argument.",
           "Use the debugger or print statements to inspect `argc` and `argv`."
@@ -606,7 +606,7 @@ B -> C
 Z -> A
 HELLO -> IFMMP`
         },
-        codeNote: "Fragment, not a full runnable file: this is only a helper function. To compile it, add needed headers and a `main` function that calls `rotate_upper`. If the full file is `rotate.c`, run `make rotate`, then `./rotate`.",
+        codeNote: "Fragment, not a full runnable file: this is only a helper function. To compile a simple test program around it, add `#include <stdio.h>` and a `main` function that calls `rotate_upper` and prints the returned character. If the full file is `rotate.c`, run `make rotate`, then `./rotate`.",
         code: `char rotate_upper(char c, int key)
 {
     return 'A' + (c - 'A' + key) % 26;
@@ -827,7 +827,7 @@ return false;`,
           "Recursion is when a function calls itself on a smaller version of the problem. It must have a base case: a condition where it stops calling itself.",
           "`return` sends a value back to the code that called the function. In `int factorial(int n)`, the function must return an integer because its return type is `int`."
         ],
-        codeNote: "Fragment, not a full runnable file: this is a helper function. To compile it, add headers and a `main` function that calls `factorial` and prints the result. If the full file is `factorial.c`, run `make factorial`, then `./factorial`.",
+        codeNote: "Fragment, not a full runnable file: this is a helper function. To compile it, add `#include <stdio.h>` and a `main` function that calls `factorial` and prints the result. If the full file is `factorial.c`, run `make factorial`, then `./factorial`.",
         code: `int factorial(int n)
 {
     if (n == 1)
@@ -894,7 +894,7 @@ return false;`,
 name:  Alice
 votes: 3`
         },
-        codeNote: "Fragment, not a full runnable file: this is a type definition. It belongs near the top of a file after includes, before functions that use `candidate`.",
+        codeNote: "Fragment, not a full runnable file: this is a type definition. Because it uses CS50's `string` type, put `#include <cs50.h>` above it. It belongs near the top of the file, before functions that use `candidate`.",
         code: `typedef struct
 {
     string name;
@@ -1102,7 +1102,7 @@ printf("%i\\n", *p);`,
           "A deep copy allocates new memory and copies every character, including the null terminator `\\0`.",
           "`malloc` asks for memory on the heap. It can fail, so check for `NULL`. `NULL` means no valid address was returned. When you are done with allocated memory, call `free`. `valgrind` helps find leaks and invalid memory use."
         ],
-        codeNote: "Fragment, not a full runnable file: this belongs inside `main` after `s` already exists. To compile it, include `stdlib.h` for `malloc`/`free` and `string.h` for `strlen`/`strcpy`. If the full file is `copy.c`, run `make copy`, then `./copy`.",
+        codeNote: "Fragment, not a full runnable file: this belongs inside `main` after `s` already exists. To compile it, add `#include <stdlib.h>` for `malloc`/`free` and `#include <string.h>` for `strlen`/`strcpy`. If the full file is `copy.c`, run `make copy`, then `./copy`.",
         code: `char *t = malloc(strlen(s) + 1);
 if (t == NULL)
 {
@@ -1215,7 +1215,7 @@ block 0: not JPEG
 block 1: JPEG header
 block 2: JPEG data`
         },
-        codeNote: "Fragment, not a full runnable file: this loop belongs inside `main` after `input` and `output` have been opened and checked. Include `stdint.h` for `uint8_t`. If the full file is `copyfile.c`, run `make copyfile`, then pass file names when you run it, such as `./copyfile input.raw output.raw`.",
+        codeNote: "Fragment, not a full runnable file: this loop belongs inside `main` after `input` and `output` have been opened and checked. Add `#include <stdint.h>` for `uint8_t` and `#include <stdio.h>` for `FILE`, `fread`, and `fwrite`. If the full file is `copyfile.c`, run `make copyfile`, then pass file names when you run it, such as `./copyfile input.raw output.raw`.",
         code: `uint8_t buffer[512];
 while (fread(buffer, 1, 512, input) > 0)
 {
@@ -1377,7 +1377,7 @@ while (fread(buffer, 1, 512, input) > 0)
           "`struct node *next` appears inside the node definition because each node needs to point to another node of the same kind. `NULL` marks the end of a list.",
           "`ptr->number` means access the `number` field through pointer `ptr`. It is shorthand for `(*ptr).number`."
         ],
-        codeNote: "Fragment, not a full runnable file: this is a type definition. It belongs near the top of a file after includes, before functions that allocate or traverse nodes.",
+        codeNote: "Fragment, not a full runnable file: this type definition itself does not need a header. Put it near the top of the file, before functions that allocate or traverse nodes. Code that allocates nodes will also need `#include <stdlib.h>` for `malloc` and `free`.",
         code: `typedef struct node
 {
     int number;
@@ -1436,7 +1436,7 @@ node;`,
 banana -> bucket 1
 boat   -> bucket 1`
         },
-        codeNote: "Fragment, not a full runnable file: this is a hash helper function. A full file must include `ctype.h` for `toupper` and define how many buckets the table has. To run it alone, write a `main` that calls `hash(\"apple\")` and prints the returned bucket.",
+        codeNote: "Fragment, not a full runnable file: this is a hash helper function. A full file must add `#include <ctype.h>` for `toupper` and define how many buckets the table has. To run it alone, also add `#include <stdio.h>` and write a `main` that calls `hash(\"apple\")` and prints the returned bucket.",
         code: `unsigned int hash(const char *word)
 {
     return toupper(word[0]) - 'A';
