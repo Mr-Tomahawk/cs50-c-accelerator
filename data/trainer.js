@@ -30,7 +30,7 @@ malloc  -> #include <stdlib.h>`
   },
   {
     prompt: "After command-line arguments are introduced: what do `argc` and `argv` mean?",
-    answer: "`argc` is the argument count. `argv` is the argument vector, an array of strings. `argv[0]` is the program name."
+    answer: "`argc` is the argument count. `argv` is the argument vector, an array of strings. If you run `./3 InsertWord`, `argc` is 2, `argv[0]` is `./3`, and `argv[1]` is `InsertWord`."
   },
   {
     prompt: "After Week 3 search: when can you use binary search?",

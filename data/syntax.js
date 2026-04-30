@@ -3,7 +3,7 @@ window.CS50C = window.CS50C || {};
 window.CS50C.syntaxBlocks = [
   {
     title: "Minimal program",
-    note: "Complete program: `stdio.h` provides `printf`; `int main(void)` means the starting function returns an integer status and receives no inputs.",
+    note: "Complete program: if saved as `hello.c`, run `make hello`, then `./hello`. `stdio.h` provides `printf`; `int main(void)` means the starting function returns an integer status and receives no inputs.",
     code: `#include <stdio.h>
 
 int main(void)
@@ -20,7 +20,7 @@ make hello
   },
   {
     title: "Input with CS50",
-    note: "Complete program: `cs50.h` provides `string`, `get_string`, and `get_int`. The shape is `type name = returned_value;`.",
+    note: "Complete program: if saved as `profile.c`, run `make profile`, then `./profile`. `cs50.h` provides `string`, `get_string`, and `get_int`. The shape is `type name = returned_value;`.",
     code: `#include <cs50.h>
 #include <stdio.h>
 
@@ -42,7 +42,7 @@ int main(void)
   },
   {
     title: "Conditionals",
-    note: "Fragment: belongs inside a function. `if` asks a yes/no question. `else if` asks another only if needed. `else` catches what remains.",
+    note: "Fragment, not a full runnable file: belongs inside a function. `if` asks a yes/no question. `else if` asks another only if needed. `else` catches what remains.",
     code: `if (x < y)
 {
     printf("less\\n");
@@ -58,7 +58,7 @@ else
   },
   {
     title: "Validated input",
-    note: "Fragment: belongs inside `main`. `do while` runs once before checking the condition, which is why it works well for asking until input is valid.",
+    note: "Fragment, not a full runnable file: belongs inside `main`. `do while` runs once before checking the condition, which is why it works well for asking until input is valid.",
     code: `int n;
 do
 {
@@ -68,7 +68,7 @@ while (n < 1 || n > 8);`
   },
   {
     title: "Function prototype",
-    note: "Complete program body except headers: add `#include <stdio.h>`. `void` before `meow` means it returns no value.",
+    note: "Complete program body except headers: add `#include <stdio.h>`. If saved as `meow.c`, run `make meow`, then `./meow`. `void` before `meow` means it returns no value.",
     code: `void meow(int n);
 
 int main(void)
@@ -86,7 +86,7 @@ void meow(int n)
   },
   {
     title: "Array loop",
-    note: "Fragment: belongs inside `main`. `int scores[3]` creates three integer slots. Indexes start at 0 and stop before length.",
+    note: "Fragment, not a full runnable file: belongs inside `main`. `int scores[3]` creates three integer slots. Indexes start at 0 and stop before length.",
     code: `int scores[3];
 
 for (int i = 0; i < 3; i++)
@@ -96,7 +96,7 @@ for (int i = 0; i < 3; i++)
   },
   {
     title: "String character loop",
-    note: "Fragment: assumes `s` already exists. `string s` can be indexed like characters. `strlen` comes from `string.h`.",
+    note: "Fragment, not a full runnable file: assumes `s` already exists. `string s` can be indexed like characters. `strlen` comes from `string.h`.",
     code: `#include <string.h>
 
 for (int i = 0, n = strlen(s); i < n; i++)
@@ -106,7 +106,7 @@ for (int i = 0, n = strlen(s); i < n; i++)
   },
   {
     title: "Command-line arguments",
-    note: "Complete `main` function but not complete file: add headers. `argc` counts terminal words and `argv` stores them.",
+    note: "Fragment, not a full runnable file: this is a complete `main` function, but the file still needs `#include <cs50.h>` and `#include <stdio.h>`. If saved as `3.c`, run `make 3`, then pass the word at launch: `./3 InsertWord`. `argc` counts terminal words and `argv` stores them.",
     code: `int main(int argc, string argv[])
 {
     if (argc != 2)
@@ -119,7 +119,7 @@ for (int i = 0, n = strlen(s); i < n; i++)
   },
   {
     title: "Linear search",
-    note: "Fragment: assumes `numbers` is an array, `length` is its count, and `target` is the value to find. Returns `true` or `false`.",
+    note: "Fragment, not a full runnable file: assumes `numbers` is an array, `length` is its count, and `target` is the value to find. Returns `true` or `false`.",
     code: `for (int i = 0; i < length; i++)
 {
     if (numbers[i] == target)
@@ -131,7 +131,7 @@ return false;`
   },
   {
     title: "Recursive shape",
-    note: "Fragment: helper function only. `int factorial(int n)` returns an integer. Base case first, then a smaller subproblem.",
+    note: "Fragment, not a full runnable file: helper function only. `int factorial(int n)` returns an integer. Base case first, then a smaller subproblem.",
     code: `int factorial(int n)
 {
     if (n == 1)
@@ -143,7 +143,7 @@ return false;`
   },
   {
     title: "Pointer basics",
-    note: "Fragment: belongs inside `main`. `int *p` declares a pointer to an integer. `&` gets an address; `*` follows an address.",
+    note: "Fragment, not a full runnable file: belongs inside `main`. `int *p` declares a pointer to an integer. `&` gets an address; `*` follows an address.",
     code: `int n = 50;
 int *p = &n;
 
@@ -152,7 +152,7 @@ printf("%i\\n", *p);`
   },
   {
     title: "Allocate and free",
-    note: "Fragment: belongs inside `main` with `stdlib.h`. `malloc` asks for heap memory and can return `NULL`.",
+    note: "Fragment, not a full runnable file: belongs inside `main` with `stdlib.h`. `malloc` asks for heap memory and can return `NULL`.",
     code: `int *x = malloc(sizeof(int));
 if (x == NULL)
 {
@@ -164,7 +164,7 @@ free(x);`
   },
   {
     title: "File copy loop",
-    note: "Fragment: belongs inside `main` with file checks added. `FILE *` is a file handle; `fread` and `fwrite` move bytes.",
+    note: "Fragment, not a full runnable file: belongs inside `main` with file checks added. `FILE *` is a file handle; `fread` and `fwrite` move bytes.",
     code: `FILE *input = fopen("in.bin", "r");
 FILE *output = fopen("out.bin", "w");
 
@@ -179,7 +179,7 @@ fclose(output);`
   },
   {
     title: "Struct and linked list node",
-    note: "Fragment: type definition near the top of a file. `typedef` creates the shorter name `node`.",
+    note: "Fragment, not a full runnable file: type definition near the top of a file. `typedef` creates the shorter name `node`.",
     code: `typedef struct node
 {
     int number;
@@ -189,7 +189,7 @@ node;`
   },
   {
     title: "Linked list traversal",
-    note: "Fragment: assumes `node` and `list` already exist. `ptr != NULL` means keep going until the end marker.",
+    note: "Fragment, not a full runnable file: assumes `node` and `list` already exist. `ptr != NULL` means keep going until the end marker.",
     code: `for (node *ptr = list; ptr != NULL; ptr = ptr->next)
 {
     printf("%i\\n", ptr->number);
@@ -197,7 +197,7 @@ node;`
   },
   {
     title: "Free linked list",
-    note: "Fragment: assumes `node` and `list` already exist. After `free(ptr)`, you cannot safely read `ptr->next`; save `next` first.",
+    note: "Fragment, not a full runnable file: assumes `node` and `list` already exist. After `free(ptr)`, you cannot safely read `ptr->next`; save `next` first.",
     code: `node *ptr = list;
 while (ptr != NULL)
 {

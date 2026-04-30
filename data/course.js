@@ -149,9 +149,9 @@ window.CS50C.course = [
       {
         title: "Command-line arguments",
         explain:
-          "`argc` counts words passed to the program. `argv` stores them as strings in an array. `argv[0]` is the program name, so the first user-supplied argument is `argv[1]`.",
+          "`argc` counts words passed to the program at launch. `argv` stores them as strings in an array. If you run `./3 InsertWord`, `argv[0]` is `./3` and the first user-supplied argument is `argv[1]`, which is `InsertWord`.",
         tags: ["argc", "argv", "cli"],
-        practice: "Write a program that requires exactly one command-line argument and prints a usage message otherwise."
+        practice: "Write a program that requires exactly one command-line argument. If saved as `3.c`, run `make 3`, then test `./3 InsertWord`, `./3`, and `./3 one two`."
       }
     ],
     pitfalls: [
@@ -367,7 +367,7 @@ window.CS50C.course = [
         explain:
           "A linked list can grow dynamically, unlike a fixed array, but finding an item usually requires traversal from the head. Insertion is pointer rewiring; order matters.",
         tags: ["linked list", "insert", "traverse", "free"],
-        practice: "Build a sorted linked list from command-line integers, print it, then free it."
+        practice: "Build a sorted linked list from command-line integers. If saved as `list.c`, run `make list`, then test with `./list 3 1 4`."
       },
       {
         title: "Stacks and queues",

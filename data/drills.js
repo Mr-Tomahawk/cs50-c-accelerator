@@ -73,6 +73,7 @@ window.CS50C.drills = [
     goal: "After `argc` and `argv` are introduced: make command-line validation automatic.",
     steps: [
       "Require exactly two arguments after the program name.",
+      "If the file is `sumargs.c`, compile with `make sumargs` and run with two launch-time arguments, such as `./sumargs 12 30`.",
       "Reject input if either argument contains a non-digit character.",
       "Convert both arguments to integers with `atoi` only after validation.",
       "Print their sum."
@@ -166,6 +167,7 @@ window.CS50C.drills = [
     steps: [
       "Start with `node *list = NULL`.",
       "Allocate a new node for each command-line number.",
+      "If the file is `list.c`, compile with `make list` and run with numbers after the program name, such as `./list 3 1 4`.",
       "Set the new node's `next` to the current list.",
       "Move `list` to the new node.",
       "Print and free the list."

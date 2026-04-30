@@ -87,7 +87,7 @@ int main(void)
           "The `=` in a declaration stores the value on the right into the variable on the left. `string name = get_string(...)` means: make a text variable named `name`, ask the user for text, then store the answer in `name`.",
           "`printf` placeholders mark where values should be inserted into a printed string. `%s` prints a string, `%i` prints an int, `%li` prints a long, `%f` prints a decimal, and `%c` prints one character."
         ],
-        codeNote: "Complete program: you can put this in a `.c` file and compile it after the CS50 library is available.",
+        codeNote: "Complete program: if you save this as `profile.c`, run `make profile`, then run `./profile`. The CS50 library must be available because this uses `cs50.h`.",
         code: `#include <cs50.h>
 #include <stdio.h>
 
@@ -153,7 +153,7 @@ int main(void)
           "Loops: `while` repeats while a condition is true. `for` is useful when counting. `do while` is useful for input validation because it asks once before checking.",
           "Magic numbers: a number like `8` is hard to understand if it appears everywhere. A named constant like `const int MAX_HEIGHT = 8;` explains its purpose."
         ],
-        codeNote: "Complete program: this is the full valid shape, including headers, constant, `main`, and braces.",
+        codeNote: "Complete program: if you save this as `height.c`, run `make height`, then run `./height`.",
         code: `#include <cs50.h>
 #include <stdio.h>
 
@@ -230,7 +230,7 @@ int main(void)
 .###
 ####`
         },
-        codeNote: "Fragment: this is only the helper function. To compile it, add headers, a prototype if `main` calls it before the definition, and a `main` function that calls `print_row`.",
+        codeNote: "Fragment, not a full runnable file: this is only the helper function. To compile it, add headers, a prototype if `main` calls it before the definition, and a `main` function that calls `print_row`. If the full file is `mario_rows.c`, run `make mario_rows`, then `./mario_rows`.",
         code: `void print_row(int spaces, int bricks)
 {
     for (int i = 0; i < spaces; i++)
@@ -359,7 +359,7 @@ int main(void)
           "Do this after the official Week 1 assignments. Each task targets one thing you learned, using only Week 1 tools.",
           "If you cannot explain why each `if`, loop, and placeholder is there, return to the earlier Week 1 lesson before moving on."
         ],
-        codeNote: "Complete program: this review combines Week 1 input, `%`, `if`, and `else`.",
+        codeNote: "Complete program: if you save this as `parity.c`, run `make parity`, then run `./parity`.",
         code: `#include <cs50.h>
 #include <stdio.h>
 
@@ -427,7 +427,7 @@ int main(void)
           "Array indexes start at 0. For three values, the valid indexes are `0`, `1`, and `2`. Index `3` is one past the end and is invalid.",
           "Loops and arrays fit together because the loop counter can become the index."
         ],
-        codeNote: "Fragment: this belongs inside `main`. To compile it, add `#include <cs50.h>`, `#include <stdio.h>`, and an `int main(void)` wrapper.",
+        codeNote: "Fragment, not a full runnable file: this belongs inside `main`. To compile it, add `#include <cs50.h>`, `#include <stdio.h>`, and an `int main(void)` wrapper. If the full file is `scores.c`, run `make scores`, then `./scores`.",
         code: `int scores[3];
 
 for (int i = 0; i < 3; i++)
@@ -479,7 +479,7 @@ for (int i = 0; i < 3; i++)
           "If a string contains `HI`, memory stores `H`, `I`, and `\\0`. The terminator is not printed as a normal letter; it tells string functions where the text ends.",
           "`strlen` counts characters before `\\0`. It comes from `#include <string.h>`. `ctype.h` gives helper functions like `isalpha`, `isdigit`, and `toupper`."
         ],
-        codeNote: "Fragment: this belongs inside `main`. To compile it, add `#include <cs50.h>`, `#include <stdio.h>`, and `#include <string.h>`.",
+        codeNote: "Fragment, not a full runnable file: this belongs inside `main`. To compile it, add `#include <cs50.h>`, `#include <stdio.h>`, `#include <string.h>`, and an `int main(void)` wrapper. If the full file is `characters.c`, run `make characters`, then `./characters`.",
         code: `string s = get_string("Text: ");
 
 for (int i = 0, n = strlen(s); i < n; i++)
@@ -532,10 +532,11 @@ for (int i = 0, n = strlen(s); i < n; i++)
         body: [
           "Functions let you name reusable work. Scope controls where a variable exists. A variable declared inside a function or loop block cannot be used everywhere.",
           "Debugging means finding and fixing mistakes. CS50 demonstrates stepping through code so you can see values change line by line.",
-          "Command-line arguments let the user provide words when launching the program. `argc` is the count; `argv` is the array of argument strings. `argv[0]` is the program name.",
+          "Command-line arguments let the user provide words when launching the program. You type them after the program name, before pressing Enter. For example, `./3 InsertWord` runs the program named `3` and gives it one extra word, `InsertWord`.",
+          "`argc` is the count; `argv` is the array of argument strings. `argv[0]` is the program name. If you run `./3 InsertWord`, then `argc` is 2, `argv[0]` is `./3`, and `argv[1]` is `InsertWord`.",
           "`int main(int argc, string argv[])` is a new shape of `main`. It still returns an integer status code, but instead of `void`, it receives two inputs from the command line: the count `argc` and the words `argv`."
         ],
-        codeNote: "Fragment: this is a complete `main` function, but a full file still needs `#include <cs50.h>` and `#include <stdio.h>` above it.",
+        codeNote: "Fragment, not a full runnable file: this is a complete `main` function, but the file still needs `#include <cs50.h>` and `#include <stdio.h>` above it. If you save the full file as `3.c`, run `make 3`, then run `./3 InsertWord`. Quotes are only needed when one argument contains spaces, as in `./3 \"two words\"`.",
         code: `int main(int argc, string argv[])
 {
     if (argc != 2)
@@ -549,7 +550,9 @@ for (int i = 0, n = strlen(s); i < n; i++)
           "`int main(int argc, string argv[])` lets the program receive words from the terminal.",
           "`argc` is an integer because it counts how many words were typed.",
           "`string argv[]` is an array of strings because it stores the typed words.",
+          "The terminal splits what you type by spaces. `./3 InsertWord` becomes two argument strings: `argv[0]` is `./3`, and `argv[1]` is `InsertWord`.",
           "`argc != 2` checks that the user typed exactly one word after the program name.",
+          "If you run `./3` with no extra word, `argc` is 1, so the usage message prints. If you run `./3 one two`, `argc` is 3, so the usage message also prints.",
           "`return 1;` stops `main` and gives the operating system a nonzero status code, meaning something went wrong.",
           "`argv[1]` is the first user-provided command-line argument.",
           "`%s` is filled by `argv[1]`, so the program prints the supplied word."
@@ -569,7 +572,8 @@ for (int i = 0, n = strlen(s); i < n; i++)
           }
         ],
         exercises: [
-          "Add the needed headers above this `main` function, then compile it.",
+          "Add the needed headers above this `main` function, save it as `3.c`, run `make 3`, then run `./3 InsertWord`.",
+          "Run `./3` and `./3 one two` to prove the usage message appears when the argument count is wrong.",
           "Replace the final `printf` with a new `for` loop that prints every command-line argument.",
           "Use the debugger or print statements to inspect `argc` and `argv`."
         ],
@@ -602,7 +606,7 @@ B -> C
 Z -> A
 HELLO -> IFMMP`
         },
-        codeNote: "Fragment: this is only a helper function. To compile it, add a `main` function that calls `rotate_upper`.",
+        codeNote: "Fragment, not a full runnable file: this is only a helper function. To compile it, add needed headers and a `main` function that calls `rotate_upper`. If the full file is `rotate.c`, run `make rotate`, then `./rotate`.",
         code: `char rotate_upper(char c, int key)
 {
     return 'A' + (c - 'A' + key) % 26;
@@ -707,9 +711,10 @@ HELLO -> IFMMP`
         ],
         body: [
           "Do this after the official Week 2 assignments. Each task uses only Week 1 and Week 2 tools.",
-          "The goal is to separate the three Week 2 skills: array indexing, string indexing, and command-line validation."
+          "The goal is to separate the three Week 2 skills: array indexing, string indexing, and command-line validation.",
+          "For the command-line review tasks, the input is not typed after a prompt. It is typed when you launch the program, for example `./letters InsertWord`."
         ],
-        codeNote: "Fragment: this belongs inside `main` after `argc == 2` has been checked.",
+        codeNote: "Fragment, not a full runnable file: this belongs inside `main` after `argc == 2` has been checked. If the full file is `letters.c`, run `make letters`, then run it with one command-line word, such as `./letters InsertWord`.",
         code: `for (int i = 0; argv[1][i] != '\\0'; i++)
 {
     printf("%c\\n", argv[1][i]);
@@ -768,7 +773,7 @@ HELLO -> IFMMP`
           "Linear search checks items one at a time. It works even if data is unsorted. Binary search checks the middle and discards half, but it only works on sorted data.",
           "Big O describes how running time grows as input grows. `O(n)` means work grows roughly with the number of items. `O(log n)` grows much more slowly."
         ],
-        codeNote: "Fragment: this is the body of a Boolean search function. It assumes `numbers`, `length`, and `target` already exist.",
+        codeNote: "Fragment, not a full runnable file: this is the body of a Boolean search function. It assumes `numbers`, `length`, and `target` already exist. To run it, wrap it in a function such as `bool search(int target, int numbers[], int length)` and call that function from `main`.",
         code: `for (int i = 0; i < length; i++)
 {
     if (numbers[i] == target)
@@ -822,7 +827,7 @@ return false;`,
           "Recursion is when a function calls itself on a smaller version of the problem. It must have a base case: a condition where it stops calling itself.",
           "`return` sends a value back to the code that called the function. In `int factorial(int n)`, the function must return an integer because its return type is `int`."
         ],
-        codeNote: "Fragment: this is a helper function. To compile it, add headers and a `main` function that calls `factorial` and prints the result.",
+        codeNote: "Fragment, not a full runnable file: this is a helper function. To compile it, add headers and a `main` function that calls `factorial` and prints the result. If the full file is `factorial.c`, run `make factorial`, then `./factorial`.",
         code: `int factorial(int n)
 {
     if (n == 1)
@@ -889,7 +894,7 @@ return false;`,
 name:  Alice
 votes: 3`
         },
-        codeNote: "Fragment: this is a type definition. It belongs near the top of a file after includes, before functions that use `candidate`.",
+        codeNote: "Fragment, not a full runnable file: this is a type definition. It belongs near the top of a file after includes, before functions that use `candidate`.",
         code: `typedef struct
 {
     string name;
@@ -991,7 +996,7 @@ candidate;`,
           "Do this after the official Week 3 assignments. Use only Week 1 through Week 3 concepts.",
           "The review separates algorithm tracing from C syntax so you can tell whether you are stuck on logic or code."
         ],
-        codeNote: "Fragment: this is the core vote-counting idea inside Plurality's vote function. It assumes `candidates`, `i`, and `name` already exist.",
+        codeNote: "Fragment, not a full runnable file: this is the core vote-counting idea inside Plurality's vote function. It assumes `candidates`, `i`, and `name` already exist.",
         code: `if (strcmp(candidates[i].name, name) == 0)
 {
     candidates[i].votes++;
@@ -1046,7 +1051,7 @@ candidate;`,
           "`&x` means the address of `x`. A pointer is a variable that stores an address. `*p` means go to the address stored in `p` and use the value there.",
           "Pointer types matter. `int *p` means `p` stores the address of an integer. The star has two related meanings: in `int *p` it declares a pointer; in `*p` by itself it follows the pointer."
         ],
-        codeNote: "Fragment: this belongs inside `main` with `#include <stdio.h>` above it.",
+        codeNote: "Fragment, not a full runnable file: this belongs inside `main` with `#include <stdio.h>` above it. If the full file is `pointer.c`, run `make pointer`, then `./pointer`.",
         code: `int n = 50;
 int *p = &n;
 
@@ -1097,7 +1102,7 @@ printf("%i\\n", *p);`,
           "A deep copy allocates new memory and copies every character, including the null terminator `\\0`.",
           "`malloc` asks for memory on the heap. It can fail, so check for `NULL`. `NULL` means no valid address was returned. When you are done with allocated memory, call `free`. `valgrind` helps find leaks and invalid memory use."
         ],
-        codeNote: "Fragment: this belongs inside `main` after `s` already exists. To compile it, include `stdlib.h` for `malloc`/`free` and `string.h` for `strlen`/`strcpy`.",
+        codeNote: "Fragment, not a full runnable file: this belongs inside `main` after `s` already exists. To compile it, include `stdlib.h` for `malloc`/`free` and `string.h` for `strlen`/`strcpy`. If the full file is `copy.c`, run `make copy`, then `./copy`.",
         code: `char *t = malloc(strlen(s) + 1);
 if (t == NULL)
 {
@@ -1148,7 +1153,7 @@ free(t);`,
           "`scanf` reads input into a memory location. That is why beginner `scanf` examples use `&n` for an integer: the function needs the address where it should place the value.",
           "Unlike CS50's `get_int`, `scanf` does not return the typed integer directly. It writes into the variable whose address you provide."
         ],
-        codeNote: "Fragment: this belongs inside `main` with `#include <stdio.h>` above it.",
+        codeNote: "Fragment, not a full runnable file: this belongs inside `main` with `#include <stdio.h>` above it. If the full file is `scan.c`, run `make scan`, then `./scan`.",
         code: `int n;
 printf("n: ");
 scanf("%i", &n);
@@ -1210,7 +1215,7 @@ block 0: not JPEG
 block 1: JPEG header
 block 2: JPEG data`
         },
-        codeNote: "Fragment: this loop belongs inside `main` after `input` and `output` have been opened and checked. Include `stdint.h` for `uint8_t`.",
+        codeNote: "Fragment, not a full runnable file: this loop belongs inside `main` after `input` and `output` have been opened and checked. Include `stdint.h` for `uint8_t`. If the full file is `copyfile.c`, run `make copyfile`, then pass file names when you run it, such as `./copyfile input.raw output.raw`.",
         code: `uint8_t buffer[512];
 while (fread(buffer, 1, 512, input) > 0)
 {
@@ -1312,7 +1317,7 @@ while (fread(buffer, 1, 512, input) > 0)
           "Do this after the official Week 4 assignments. Each task isolates one memory idea before combining them.",
           "If a program uses `malloc` or `fopen`, your review standard is not just correct output; it must also clean up memory and close files."
         ],
-        codeNote: "Fragment: this condition belongs inside Recover's 512-byte read loop after `buffer` has been filled by `fread`.",
+        codeNote: "Fragment, not a full runnable file: this condition belongs inside Recover's 512-byte read loop after `buffer` has been filled by `fread`.",
         code: `if (buffer[0] == 0xff &&
     buffer[1] == 0xd8 &&
     buffer[2] == 0xff &&
@@ -1372,7 +1377,7 @@ while (fread(buffer, 1, 512, input) > 0)
           "`struct node *next` appears inside the node definition because each node needs to point to another node of the same kind. `NULL` marks the end of a list.",
           "`ptr->number` means access the `number` field through pointer `ptr`. It is shorthand for `(*ptr).number`."
         ],
-        codeNote: "Fragment: this is a type definition. It belongs near the top of a file after includes, before functions that allocate or traverse nodes.",
+        codeNote: "Fragment, not a full runnable file: this is a type definition. It belongs near the top of a file after includes, before functions that allocate or traverse nodes.",
         code: `typedef struct node
 {
     int number;
@@ -1431,7 +1436,7 @@ node;`,
 banana -> bucket 1
 boat   -> bucket 1`
         },
-        codeNote: "Fragment: this is a hash helper function. A full file must include `ctype.h` for `toupper` and define how many buckets the table has.",
+        codeNote: "Fragment, not a full runnable file: this is a hash helper function. A full file must include `ctype.h` for `toupper` and define how many buckets the table has. To run it alone, write a `main` that calls `hash(\"apple\")` and prints the returned bucket.",
         code: `unsigned int hash(const char *word)
 {
     return toupper(word[0]) - 'A';
@@ -1540,7 +1545,7 @@ boat   -> bucket 1`
    |
  word -> word -> word -> NULL`
         },
-        codeNote: "Fragment: this is the core loop inside Speller's `check` function. It assumes `table`, `bucket`, `node`, and `word` already exist.",
+        codeNote: "Fragment, not a full runnable file: this is the core loop inside Speller's `check` function. It assumes `table`, `bucket`, `node`, and `word` already exist.",
         code: `for (node *cursor = table[bucket]; cursor != NULL; cursor = cursor->next)
 {
     if (strcasecmp(cursor->word, word) == 0)

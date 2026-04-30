@@ -48,7 +48,7 @@ window.CS50C.practices = [
     steps: [
       "Scrabble: score words by letters.",
       "Readability: count letters, words, and sentences.",
-      "Caesar: validate a numeric key from `argv`, then rotate letters.",
+      "Caesar: validate a numeric key from `argv`, then rotate letters. If your file is `caesar.c`, compile with `make caesar` and run with a key after the program name, such as `./caesar 13`.",
       "Test uppercase, lowercase, punctuation, and invalid arguments."
     ],
     hints: "`ctype.h` provides `isalpha`, `isdigit`, and case helpers. Validate `argc` before reading `argv[1]`."
@@ -112,7 +112,7 @@ window.CS50C.practices = [
     goal: "Allocate nodes, connect pointers, traverse, and free everything.",
     steps: [
       "Define a `node` struct.",
-      "Convert each `argv` number with `atoi`.",
+      "Convert each `argv` number with `atoi`. If your file is `list.c`, compile with `make list` and run with numbers after the program name, such as `./list 3 1 4`.",
       "Insert each number into a sorted linked list.",
       "Print the list, then free every node."
     ],
