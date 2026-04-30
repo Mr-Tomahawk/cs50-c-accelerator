@@ -1,6 +1,6 @@
-# CS50 C Accelerator
+# CS50x 2026 C Accelerator
 
-A beginner-first, static study site for learning the C programming material from CS50x Weeks 1-5 without needing to watch every lecture video end to end.
+A beginner-first, static study site based on the C programming material from CS50x 2026 Weeks 1-5. It is designed to teach the material directly through written lessons, code walkthroughs, checks, drills, and assignments, so you can learn the C portion without watching the lecture and section videos.
 
 The site is organized like a course: pick a week, read the lesson, walk through code line by line, check your understanding, complete CS50-style assignments, then use review drills for extra practice.
 
@@ -67,9 +67,9 @@ Then open `http://localhost:8080`.
 
 ## Source Material And Attribution
 
-This project is an independent learning aid based on the C-relevant portions of CS50x. It is not affiliated with or endorsed by Harvard, CS50, or edX.
+This project is an independent learning aid based on the C-relevant portions of CS50x 2026. It is not affiliated with or endorsed by Harvard, CS50, or edX.
 
-Teaching content is grounded in CS50x Weeks 1-5, including official course pages, notes, source code, sections, problem-set pages, and YouTube transcripts. See [materials/PROVENANCE.md](materials/PROVENANCE.md) for the coverage map.
+Teaching content is grounded in CS50x 2026 Weeks 1-5, including official course pages, notes, source code, sections, problem-set pages, and YouTube transcripts. See [materials/PROVENANCE.md](materials/PROVENANCE.md) for the coverage map.
 
 Raw downloaded transcripts, HTML snapshots, and zip files are intentionally not committed to this public repository. The site contains condensed teaching notes, code walkthroughs, exercises, and provenance references rather than republished raw source material.
 
