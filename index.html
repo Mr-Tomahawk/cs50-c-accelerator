@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A thorough CS50 C learning site built from C-relevant lectures, sections, shorts, notes, source code, and practice assignments.">
+    <title>CS50 C, Without the Video Time</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="topbar" aria-label="Primary">
+        <a href="#course">Course</a>
+        <a href="#start-here">Start Here</a>
+        <a href="#coverage">Coverage</a>
+        <a href="#syntax">Syntax</a>
+        <a href="#practice">Practice</a>
+        <a href="#trainer">Trainer</a>
+        <a href="#sources">Sources</a>
+      </nav>
+
+      <section class="hero-grid">
+        <div>
+          <p class="eyebrow">CS50x C track intensive</p>
+          <h1>Learn CS50's C material without spending hours watching videos.</h1>
+          <p class="hero-copy">
+            Select a week, read the beginner notes, work through guided examples, drill syntax, then complete practice assignments. No prior programming experience assumed.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#learn">Start learning</a>
+            <a class="button secondary" href="#practice">Jump to exercises</a>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <p class="card-label">Coverage Target</p>
+          <strong>CS50 C Weeks 1-5</strong>
+          <ul>
+            <li>C syntax, types, loops, functions</li>
+            <li>Arrays, strings, command-line arguments</li>
+            <li>Search, sort, Big O, recursion</li>
+            <li>Pointers, heap allocation, file I/O</li>
+            <li>Structs, linked lists, hash tables, tries</li>
+          </ul>
+        </aside>
+      </section>
+    </header>
+
+    <main>
+      <section class="panel compact" id="course-map">
+        <p class="eyebrow">What is included</p>
+        <h2>All CS50 C-related material</h2>
+        <p>
+          This track covers CS50x 2026 Weeks 1-5 because they are the course's C programming portion: C basics, Arrays, Algorithms, Memory, and Data Structures. Python, SQL, web, Flask, and final-project material are excluded because they are no longer focused on C.
+        </p>
+      </section>
+
+      <section class="panel" id="start-here">
+        <div class="section-heading inline">
+          <p class="eyebrow">Start Here</p>
+          <h2>How To Use This If You Have Never Programmed</h2>
+          <p>Do not skim. Programming is learned by reading a little, typing code, running it, breaking it, and fixing it.</p>
+        </div>
+        <div class="beginner-grid">
+          <article>
+            <strong>Week</strong>
+            <span>A course unit. Week 1 is where you start writing C. Do one week at a time.</span>
+          </article>
+          <article>
+            <strong>Lecture notes</strong>
+            <span>The explanation part. Read slowly, then type the code example yourself.</span>
+          </article>
+          <article>
+            <strong>Section walkthrough</strong>
+            <span>A guided practice explanation. This is where ideas become small working programs.</span>
+          </article>
+          <article>
+            <strong>Shorts / syntax drills</strong>
+            <span>Small memorization targets. These help you remember punctuation and common patterns.</span>
+          </article>
+          <article>
+            <strong>Practice assignment</strong>
+            <span>CS50 calls this a problem set, or pset. It means programming homework where you build real programs.</span>
+          </article>
+          <article>
+            <strong>Compile</strong>
+            <span>Turn your C source code into a runnable program. In CS50, you usually do this with <code>make program</code>.</span>
+          </article>
+          <article>
+            <strong><code>void</code></strong>
+            <span>Means “nothing” in a specific place. In <code>main(void)</code>, it means no inputs. Before a helper function, it means no returned value.</span>
+          </article>
+          <article>
+            <strong><code>string</code></strong>
+            <span>CS50's beginner type for text. It comes from <code>cs50.h</code>. Text directly inside quotes is a string literal.</span>
+          </article>
+          <article>
+            <strong>Placeholder</strong>
+            <span>A marker like <code>%s</code> or <code>%i</code> inside a <code>printf</code> format string. Later arguments fill those markers in order.</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-heading" id="course">
+        <p class="eyebrow">Course</p>
+        <h2>Week Workspace</h2>
+        <p>Use this like a compressed CS50 week: read the notes, answer quick checks, type guided examples, then work the practice assignments.</p>
+      </section>
+      <section class="tabs" id="weekTabs" aria-label="Week filter"></section>
+      <section id="weekWorkspace" aria-live="polite"></section>
+
+      <section class="section-heading">
+        <p class="eyebrow">Reference</p>
+        <h2>Week Summaries</h2>
+        <p>Use these after the lesson workspace, not before it.</p>
+      </section>
+      <section class="module-grid" id="moduleGrid"></section>
+
+      <section class="panel" id="coverage">
+        <div class="section-heading inline">
+          <p class="eyebrow">Coverage</p>
+          <h2>CS50 C Topic Checklist</h2>
+          <p>Use this as the audit list. If you cannot explain and code each item, do not consider that week complete.</p>
+        </div>
+        <div class="coverage-grid" id="coverageGrid"></div>
+      </section>
+
+      <section class="panel" id="syntax">
+        <div class="section-heading inline">
+          <p class="eyebrow">Memorize</p>
+          <h2>C Syntax Sheet</h2>
+          <p>Use these blocks as daily copy-from-memory targets. You should be able to recreate them without looking and explain each token.</p>
+        </div>
+        <div class="syntax-grid" id="syntaxGrid"></div>
+      </section>
+
+      <section class="panel split" id="mental-models">
+        <div>
+          <p class="eyebrow">Mental Model</p>
+          <h2>How to think while writing C</h2>
+          <p>
+            C is strict because the compiler and runtime do almost exactly what you asked, not what you intended. The learning progression is: control syntax, then arrays and strings, then algorithmic reasoning, then memory ownership, then pointer-based structures.
+          </p>
+        </div>
+        <div class="model-list">
+          <article>
+            <strong>Every name needs a type.</strong>
+            <span>Before a variable can hold data, C needs to know what kind of data it stores.</span>
+          </article>
+          <article>
+            <strong>Every external function needs a declaration.</strong>
+            <span>Headers such as <code>stdio.h</code> and <code>cs50.h</code> tell the compiler which functions exist.</span>
+          </article>
+          <article>
+            <strong>Every branch should be testable.</strong>
+            <span>For each <code>if</code>, choose input that proves it runs and input that proves it does not run.</span>
+          </article>
+          <article>
+            <strong>Every loop needs progress.</strong>
+            <span>Ask: what changes each iteration, and what eventually makes the condition false?</span>
+          </article>
+          <article>
+            <strong>Every pointer needs ownership clarity.</strong>
+            <span>Ask: who allocated this memory, who is allowed to use it, and who frees it?</span>
+          </article>
+          <article>
+            <strong>Every data structure is a tradeoff.</strong>
+            <span>Arrays, lists, tables, and tries buy different lookup, insertion, deletion, and memory costs.</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-heading" id="practice">
+        <p class="eyebrow">Practice</p>
+        <h2>Exercises and Projects</h2>
+        <p>These move from syntax recall to CS50-style programming assignments. Try each without looking, then use hints only if blocked.</p>
+      </section>
+      <section class="practice-list" id="practiceList"></section>
+
+      <section class="panel" id="extra-drills">
+        <div class="section-heading inline">
+          <p class="eyebrow">Extra</p>
+          <h2>Gap-Filling Drills</h2>
+          <p>These are not replacements for CS50 practice assignments. They are smaller exercises designed to force syntax fluency and memory-model accuracy before the bigger assignments.</p>
+        </div>
+        <section class="practice-list" id="drillList"></section>
+      </section>
+
+      <section class="panel" id="trainer">
+        <div class="trainer-layout">
+          <div>
+            <p class="eyebrow">Active Recall</p>
+            <h2>Syntax Trainer</h2>
+            <p>Answer before revealing. If you miss one, write the answer three times in your editor and compile a tiny example that uses it.</p>
+          </div>
+          <div class="trainer-card">
+            <p id="flashPrompt">Loading prompt...</p>
+            <button class="button secondary" id="revealButton" type="button">Reveal answer</button>
+            <pre id="flashAnswer" hidden></pre>
+            <button class="button primary" id="nextButton" type="button">Next card</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel compact" id="sources">
+        <p class="eyebrow">Sources</p>
+        <h2>Raw materials and reproducibility</h2>
+        <p>
+          Raw transcripts and CS50 reference pages are stored under <code>materials/raw</code>. The website is intentionally written as distilled explanations, checklists, syntax drills, and exercises rather than full transcript republication.
+        </p>
+        <ul class="source-list">
+          <li><a href="https://cs50.harvard.edu/x/weeks/1/">CS50x Week 1 C</a></li>
+          <li><a href="https://cs50.harvard.edu/x/weeks/2/">CS50x Week 2 Arrays</a></li>
+          <li><a href="https://cs50.harvard.edu/x/weeks/3/">CS50x Week 3 Algorithms</a></li>
+          <li><a href="https://cs50.harvard.edu/x/weeks/4/">CS50x Week 4 Memory</a></li>
+          <li><a href="https://cs50.harvard.edu/x/weeks/5/">CS50x Week 5 Data Structures</a></li>
+          <li><a href="https://cs50.harvard.edu/x/psets/">CS50x programming assignments</a></li>
+          <li><a href="materials/PROVENANCE.md">Local provenance and coverage map</a></li>
+          <li><a href="https://github.com/yt-dlp/yt-dlp">yt-dlp official repository</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Study loop: read one lesson, type one syntax block from memory, complete one drill, then explain the memory model or runtime cost out loud.</p>
+    </footer>
+
+    <script src="data/course.js"></script>
+    <script src="data/accelerator.js"></script>
+    <script src="data/syntax.js"></script>
+    <script src="data/practice.js"></script>
+    <script src="data/drills.js"></script>
+    <script src="data/trainer.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
